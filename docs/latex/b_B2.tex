@@ -1,0 +1,15 @@
+\textbf{Phát biểu.} Cho \(A\in\mathbb R^{m\times n}\) có SVD \(A=\sum_{i=1}^{r}\sigma_iu_iv_i^\top\) (\(\sigma_1\ge\dots\ge\sigma_r>0\), \(r=\operatorname{rank}A\), quy ước \(\sigma_i=0\) khi \(i>r\)), \(1\le k\le\min(m,n)\) và \(A_k=\sum_{i=1}^k\sigma_iu_iv_i^\top\). Khi đó \[\min_{\operatorname{rank}(B)\le k}\|A-B\|_F^2=\sum_{i>k}\sigma_i^2,\] đạt tại \(B=A_k\). Nếu \(\sigma_k>\sigma_{k+1}\) thì \(A_k\) là nghiệm \textbf{duy nhất}.
+
+\textbf{Chứng minh.}
+
+\emph{Bước 1 --- chặn dưới theo một không gian con.} Cho \(B\) với \(\operatorname{rank}B\le k\). Lấy một cơ sở trực chuẩn của \(\operatorname{col}(B)\) và bổ sung cho đủ \(k\) vector trực chuẩn (được vì \(k\le m\)), ghép thành \(Q\in\mathbb R^{m\times k}\), \(Q^\top Q=I_k\), \(\operatorname{col}(B)\subseteq\operatorname{col}(Q)\). Với cột thứ \(j\): \(a_j-b_j=(I-QQ^\top)a_j+(QQ^\top a_j-b_j)\); số hạng đầu vuông góc với \(\operatorname{col}(Q)\), số hạng sau thuộc \(\operatorname{col}(Q)\). Theo Pythagoras, \[\|a_j-b_j\|^2=\|(I-QQ^\top)a_j\|^2+\|QQ^\top a_j-b_j\|^2\ \ge\ \|(I-QQ^\top)a_j\|^2 .\] Cộng theo \(j\): \(\|A-B\|_F^2\ge\|(I-QQ^\top)A\|_F^2\), dấu bằng khi và chỉ khi \(B=QQ^\top A\).
+
+\emph{Bước 2 --- tính chặn dưới.} Theo (F1) áp dụng cho từng cột, \(\|(I-QQ^\top)A\|_F^2=\|A\|_F^2-\|Q^\top A\|_F^2=\|A\|_F^2-\operatorname{tr}(Q^\top AA^\top Q)\). Ngoài ra \(\|A\|_F^2=\operatorname{tr}(A^\top A)=\sum_i\sigma_i^2\).
+
+\emph{Bước 3 --- dùng Ky Fan.} \(AA^\top\) đối xứng, có trị riêng \(\sigma_1^2\ge\sigma_2^2\ge\dots\) (cùng các số 0) với vector riêng \(u_i\). Theo B.1, \(\operatorname{tr}(Q^\top AA^\top Q)\le\sum_{i\le k}\sigma_i^2\). Vậy \[\|A-B\|_F^2\ \ge\ \sum_i\sigma_i^2-\sum_{i\le k}\sigma_i^2=\sum_{i>k}\sigma_i^2 .\]
+
+\emph{Bước 4 --- đạt được.} \(A-A_k=\sum_{i>k}\sigma_iu_iv_i^\top\), và do \(\{u_i\}\), \(\{v_i\}\) trực chuẩn, \(\|A-A_k\|_F^2=\operatorname{tr}\big(\sum_{i>k}\sigma_i^2v_iv_i^\top\big)=\sum_{i>k}\sigma_i^2\).
+
+\emph{Bước 5 --- duy nhất.} Nếu \(\|A-B\|_F^2=\sum_{i>k}\sigma_i^2\) thì mọi bất đẳng thức trên là đẳng thức: (i) theo phần duy nhất của B.1 (với \(\sigma_k^2>\sigma_{k+1}^2\)), \(\operatorname{col}(Q)=\operatorname{span}(u_1,\dots,u_k)\), tức \(QQ^\top=U_kU_k^\top\); (ii) \(B=QQ^\top A=U_kU_k^\top A=A_k\). \(\blacksquare\)
+
+\emph{Hệ quả cho PCA:} với \(A=X_c\), giữ \(k\) thành phần chính đầu là xấp xỉ hạng \(k\) tối ưu của dữ liệu; sai số tái tạo bằng \((n-1)\sum_{i>k}\lambda_i\).

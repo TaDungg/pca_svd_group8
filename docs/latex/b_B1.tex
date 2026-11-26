@@ -1,0 +1,28 @@
+\textbf{Phát biểu.} Cho \(\Sigma\in\mathbb R^{d\times d}\) đối xứng với trị riêng \(\lambda_1\ge\dots\ge\lambda_d\) và vector riêng trực chuẩn \(v_1,\dots,v_d\); \(1\le k\le d\), \(V_k=[v_1,\dots,v_k]\).
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+
+\item
+  \emph{(Ky Fan)} \(\displaystyle\max_{U\in\mathbb R^{d\times k},\,U^\top U=I_k}\operatorname{tr}(U^\top\Sigma U)=\sum_{i=1}^k\lambda_i\), đạt tại \(U=V_k\). Nếu thêm \(\lambda_k>\lambda_{k+1}\) thì giá trị lớn nhất đạt \textbf{khi và chỉ khi} \(\operatorname{span}(U)=\operatorname{span}(V_k)\). Trường hợp \(k=1\): \(\max_{\|u\|=1}u^\top\Sigma u=\lambda_1\) (thương Rayleigh).
+\item
+  \emph{(Tương đương)} Với dữ liệu đã quy tâm \(x_1,\dots,x_n\) và \(\Sigma=\frac1{n-1}\sum_i x_ix_i^\top\), mọi \(U\) có \(U^\top U=I_k\) thỏa \[\underbrace{\frac1{n-1}\sum_{i=1}^n\|x_i-UU^\top x_i\|^2}_{\text{sai số tái tạo}}=\operatorname{tr}\Sigma-\underbrace{\operatorname{tr}(U^\top\Sigma U)}_{\text{phương sai của dữ liệu chiếu}} .\] Do \(\operatorname{tr}\Sigma\) không phụ thuộc \(U\), \textbf{cực đại phương sai chiếu và cực tiểu sai số tái tạo có cùng tập nghiệm}.
+\end{enumerate}
+
+\textbf{Chứng minh (2).} Theo (F1), \(\|x_i\|^2=\|U^\top x_i\|^2+\|x_i-UU^\top x_i\|^2\). Lấy tổng và chia \(n-1\): \(\frac1{n-1}\sum_i\|x_i\|^2=\operatorname{tr}\big(\frac1{n-1}\sum_ix_ix_i^\top\big)=\operatorname{tr}\Sigma\) và \(\frac1{n-1}\sum_i\|U^\top x_i\|^2=\operatorname{tr}\big(U^\top\Sigma U\big)\) (dùng (F2)). Vì \(\sum_iU^\top x_i=U^\top\sum_ix_i=0\), đại lượng này đúng là tổng phương sai của các tọa độ chiếu \(U^\top x_i\). \(\square\)
+
+\textbf{Chứng minh (1).} Viết \(\Sigma=V\Lambda V^\top\). Theo (F2), \(\operatorname{tr}(U^\top\Sigma U)=\operatorname{tr}(\Lambda\,V^\top UU^\top V)=\sum_{i=1}^d\lambda_iw_i\), với \(w_i=v_i^\top UU^\top v_i=\|U^\top v_i\|^2\). Các trọng số thỏa:
+
+\begin{itemize}
+
+\item
+  \(0\le w_i\le1\) --- theo (F1), \(\|U^\top v_i\|^2\le\|v_i\|^2=1\);
+\item
+  \(\sum_iw_i=\operatorname{tr}(V^\top UU^\top V)=\operatorname{tr}(U^\top VV^\top U)=\operatorname{tr}(U^\top U)=k\).
+\end{itemize}
+
+Khi đó \[\sum_i\lambda_iw_i-\sum_{i\le k}\lambda_i=\sum_{i\le k}\lambda_i(w_i-1)+\sum_{i>k}\lambda_iw_i\le\lambda_k\sum_{i\le k}(w_i-1)+\lambda_k\sum_{i>k}w_i=\lambda_k\Big(\sum_iw_i-k\Big)=0,\] trong đó bất đẳng thức dùng: với \(i\le k\), \(w_i-1\le0\) và \(\lambda_i\ge\lambda_k\); với \(i>k\), \(w_i\ge0\) và \(\lambda_i\le\lambda_k\). Tại \(U=V_k\): \(w_i=1\) (\(i\le k\)), \(w_i=0\) (\(i>k\)), nên đạt dấu bằng.
+
+\emph{Duy nhất.} Phần chênh lệch đúng bằng \(-\sum_{i\le k}(\lambda_i-\lambda_k)(1-w_i)-\sum_{i>k}(\lambda_k-\lambda_i)w_i\), tổng các số hạng không dương. Dấu bằng buộc \((\lambda_k-\lambda_i)w_i=0\) với mọi \(i>k\); nếu \(\lambda_k>\lambda_{k+1}\ge\lambda_i\) thì \(w_i=\|U^\top v_i\|^2=0\), tức \(\operatorname{span}(U)\perp v_{k+1},\dots,v_d\), nên \(\operatorname{span}(U)\subseteq\operatorname{span}(V_k)\); hai không gian cùng \(k\) chiều nên bằng nhau. Chiều ngược lại: nếu \(\operatorname{span}(U)=\operatorname{span}(V_k)\) thì \(U=V_kG\) với \(G\) trực giao, \(\operatorname{tr}(U^\top\Sigma U)=\operatorname{tr}(G^\top\Lambda_kG)=\sum_{i\le k}\lambda_i\). \(\blacksquare\)
+
+\emph{Ghi chú:} chứng minh không cần \(\Sigma\) nửa xác định dương --- điều này được dùng lại ở B.2 cho \(AA^\top\).

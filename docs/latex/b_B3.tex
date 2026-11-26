@@ -1,0 +1,13 @@
+\textbf{Phát biểu.} Cho \(X_c\in\mathbb R^{n\times d}\) có SVD \(X_c=U\,\mathrm{diag}(\sigma)V^\top\), \textbf{hạng đầy đủ theo cột} (\(\operatorname{rank}X_c=d\le n\)), và \(\sigma_k>\sigma_{k+1}\). Xét bộ tự mã hóa tuyến tính với bộ mã hóa \(E\in\mathbb R^{k\times d}\), bộ giải mã \(D\in\mathbb R^{d\times k}\), ánh xạ tái tạo \(x\mapsto DEx\), và mất mát \[\mathcal L(E,D)=\|X_c-X_cE^\top D^\top\|_F^2=\sum_{i=1}^n\|x_i-DEx_i\|^2 .\] Khi đó \(\min_{E,D}\mathcal L=\sum_{i>k}\sigma_i^2\), và \((E,D)\) là cực tiểu toàn cục \textbf{khi và chỉ khi} \(DE=V_kV_k^\top\) --- phép chiếu trực giao lên không gian con chính. Hệ quả: \(\operatorname{span}(D)=\operatorname{span}(V_k)\).
+
+\textbf{Chứng minh.} \emph{Chặn dưới.} \(\operatorname{rank}(X_cE^\top D^\top)\le\operatorname{rank}(D^\top)\le k\), nên theo B.2, \(\mathcal L(E,D)\ge\sum_{i>k}\sigma_i^2\) với mọi \((E,D)\).
+
+\emph{Đạt được.} Với \(E=V_k^\top\), \(D=V_k\): \(X_cV_kV_k^\top=\sum_{i\le k}\sigma_iu_iv_i^\top=A_k\) (vì \(X_cv_i=\sigma_iu_i\)), nên \(\mathcal L=\sum_{i>k}\sigma_i^2\).
+
+\emph{Điều kiện cần.} Giả sử \(\mathcal L(E,D)=\sum_{i>k}\sigma_i^2\). Theo phần duy nhất của B.2 (dùng \(\sigma_k>\sigma_{k+1}\)), \(X_cE^\top D^\top=A_k=X_cV_kV_k^\top\), tức \(X_c\big(E^\top D^\top-V_kV_k^\top\big)=0\). Vì \(X_c\) hạng đầy đủ theo cột, \(X_cM=0\Rightarrow M=0\), nên \(E^\top D^\top=V_kV_k^\top\); chuyển vị: \(DE=V_kV_k^\top\). Ma trận này đối xứng và lũy đẳng, ảnh là \(\operatorname{span}(V_k)\): đó là phép chiếu trực giao lên không gian con chính.
+
+\emph{Điều kiện đủ.} Nếu \(DE=V_kV_k^\top\) thì \(X_cE^\top D^\top=X_c(DE)^\top=X_cV_kV_k^\top=A_k\), đạt cực tiểu.
+
+\emph{Hệ quả.} \(\operatorname{span}(V_k)=\operatorname{range}(DE)\subseteq\operatorname{range}(D)\), mà \(\dim\operatorname{range}(D)\le k\), nên \(\operatorname{span}(D)=\operatorname{span}(V_k)\). \(\blacksquare\)
+
+\emph{Nhận xét.} (i) \(D\), \(E\) không duy nhất: với mọi \(G\in GL_k\), cặp \((G^{-1}V_k^\top,\ V_kG)\) cũng tối ưu; vì vậy bộ tự mã hóa \textbf{tìm đúng không gian con PCA nhưng không nhất thiết tìm ra các hướng chính riêng lẻ} (cơ sở trực chuẩn, sắp theo phương sai). (ii) Baldi \& Hornik (1989) chứng minh thêm rằng mọi điểm dừng khác của \(\mathcal L\) là điểm yên ngựa (không có cực tiểu địa phương xấu) --- giải thích vì sao hạ gradient ở A.3 luôn hội tụ về nghiệm toàn cục.

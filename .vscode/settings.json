@@ -1,0 +1,4 @@
+{
+    "python.analysis.extraPaths": ["./DeTai8_PCA_SVD/src"],
+    "jupyter.notebookFileRoot": "${fileDirname}"
+}

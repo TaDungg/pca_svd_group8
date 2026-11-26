@@ -1,0 +1,15 @@
+\textbf{Phát biểu.} Cho \(x\sim\mathcal N(\mu,\Sigma)\) với \(\mu\), \(\Sigma\) đã biết; \(\Sigma=\sum_i\lambda_iv_iv_i^\top\) (\(\lambda_1\ge\dots\ge\lambda_d\), \(v_i\) trực chuẩn) và \(\lambda_k>0\). Đặt \(t_i=v_i^\top(x-\mu)\) là tọa độ chiếu lên thành phần chính thứ \(i\). Khi đó \[T^2=\sum_{i=1}^k\frac{t_i^2}{\lambda_i}\sim\chi^2_k .\]
+
+\textbf{Chứng minh.} Đặt \(t=V_k^\top(x-\mu)\in\mathbb R^k\). Là ảnh tuyến tính của vector Gauss, \(t\) có phân phối Gauss với trung bình \(V_k^\top\mathbb E(x-\mu)=0\) và hiệp phương sai \(V_k^\top\Sigma V_k=\Lambda_k=\operatorname{diag}(\lambda_1,\dots,\lambda_k)\) (do \(\Sigma v_i=\lambda_iv_i\) và \(v_i\) trực chuẩn). Đặt \(z_i=t_i/\sqrt{\lambda_i}\) (được vì \(\lambda_i\ge\lambda_k>0\)): \(z=\Lambda_k^{-1/2}t\sim\mathcal N(0,I_k)\). Với vector Gauss, không tương quan tương đương độc lập, nên \(z_1,\dots,z_k\) i.i.d. \(\mathcal N(0,1)\). Theo định nghĩa phân phối chi bình phương, \(T^2=\sum_{i\le k}z_i^2\sim\chi^2_k\). \(\blacksquare\)
+
+\emph{Hệ quả.}
+
+\begin{itemize}
+
+\item
+  Giới hạn kiểm soát \(T^2_\alpha=\chi^2_{k,1-\alpha}\) cho đúng tỉ lệ báo động giả \(\alpha\).
+\item
+  Cùng lập luận: \(\mathrm{SPE}=\sum_{i>k}t_i^2=\sum_{i>k}\lambda_iz_i^2\) là \textbf{tổng có trọng số của các \(\chi^2_1\)} --- không có dạng đóng đơn giản, nên cần các xấp xỉ Jackson--Mudholkar hay Box (\(g\chi^2_h\), khớp hai mômen đầu: \(\mathbb E=\theta_1\), \(\operatorname{Var}=2\theta_2\)) dùng ở A.4.
+\item
+  Khi \(\mu\), \(\Sigma\) \textbf{ước lượng} từ \(n\) mẫu, \(T^2\) của quan sát mới tuân theo \(\frac{k(n-1)(n+1)}{n(n-k)}F_{k,n-k}\) (không chứng minh ở đây); với \(n\) nhỏ, dùng \(\chi^2_k\) sẽ làm tăng báo động giả --- kiểm chứng bên dưới.
+\end{itemize}

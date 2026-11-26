@@ -1,0 +1,9 @@
+\textbf{Phát biểu.} Cho \(A\in\mathbb R^{d\times d}\) đối xứng, trị riêng \(|\lambda_1|>|\lambda_2|\ge\dots\ge|\lambda_d|\) với vector riêng trực chuẩn \(u_1,\dots,u_d\), và \(v_0\) có \(u_1^\top v_0\neq0\). Lặp \(v_{t+1}=Av_t/\|Av_t\|\). Định nghĩa \(\tan\angle(v,u_1)=\dfrac{\|v-(u_1^\top v)u_1\|}{|u_1^\top v|}\). Khi đó \[\tan\angle(v_t,u_1)\le\Big|\frac{\lambda_2}{\lambda_1}\Big|^t\tan\angle(v_0,u_1).\]
+
+\textbf{Chứng minh.} \emph{Bước 1 --- dạng đóng.} Bằng quy nạp, \(v_t=A^tv_0/\|A^tv_0\|\): đúng với \(t=0\); nếu đúng với \(t\) thì \(Av_t=A^{t+1}v_0/\|A^tv_0\|\), chuẩn hóa ra \(A^{t+1}v_0/\|A^{t+1}v_0\|\). (Mẫu số khác 0 --- xem bước 2.)
+
+\emph{Bước 2 --- khai triển theo cơ sở riêng.} Vì \(A\) đối xứng, \(\{u_i\}\) là cơ sở trực chuẩn: \(v_0=\sum_ic_iu_i\) với \(c_i=u_i^\top v_0\), \(c_1\ne0\). Khi đó \(A^tv_0=\sum_ic_i\lambda_i^tu_i\); thành phần theo \(u_1\) là \(c_1\lambda_1^t\ne0\) (do \(|\lambda_1|>|\lambda_2|\ge0\) nên \(\lambda_1\ne0\)), nên \(A^tv_0\ne0\).
+
+\emph{Bước 3 --- góc.} Góc không đổi khi nhân vector với số dương, nên \[\tan\angle(v_t,u_1)=\frac{\big\|\sum_{i\ge2}c_i\lambda_i^tu_i\big\|}{|c_1\lambda_1^t|}=\frac{\big(\sum_{i\ge2}c_i^2\lambda_i^{2t}\big)^{1/2}}{|c_1||\lambda_1|^t}\le\frac{|\lambda_2|^t\big(\sum_{i\ge2}c_i^2\big)^{1/2}}{|c_1||\lambda_1|^t}=\Big|\frac{\lambda_2}{\lambda_1}\Big|^t\tan\angle(v_0,u_1),\] dùng \(|\lambda_i|\le|\lambda_2|\) với \(i\ge2\) và tính trực chuẩn (Pythagoras). \(\blacksquare\)
+
+\emph{Hệ quả cho A.2/C.4:} tốc độ hội tụ hình học với tỉ số \(|\lambda_2/\lambda_1|\); với SVD (lặp trên \(A^\top A\)) tỉ số là \((\sigma_2/\sigma_1)^2\), và với lặp khối \(k\) vector là \((\sigma_{k+1}/\sigma_k)^2\) --- rất chậm khi phổ suy giảm chậm.

@@ -1,0 +1,11 @@
+\textbf{Bước 1 --- trung bình.} \(\mu=\frac14\big(3+1-3-1,\ 1+3-1-3\big)=(0,0)\): dữ liệu đã quy tâm, \(X_c=X=\begin{bmatrix}3&1\\1&3\\-3&-1\\-1&-3\end{bmatrix}\).
+
+\textbf{Bước 2 --- ma trận tán xạ và hiệp phương sai.} \(X^\top X=\begin{bmatrix}9+1+9+1 & 3+3+3+3\\ 3+3+3+3 & 1+9+1+9\end{bmatrix}=\begin{bmatrix}20&12\\12&20\end{bmatrix}\), nên \(\Sigma=\frac1{n-1}X^\top X=\frac13\begin{bmatrix}20&12\\12&20\end{bmatrix}=\begin{bmatrix}20/3&4\\4&20/3\end{bmatrix}\). (Nếu dùng ước lượng hợp lý cực đại \(\frac1n X^\top X=\begin{bmatrix}5&3\\3&5\end{bmatrix}\) thì mọi trị riêng chia cho 4 thay vì 3; hướng chính và tỉ lệ phương sai không đổi.)
+
+\textbf{Bước 3 --- trị riêng, vector riêng.} \(\det\begin{bmatrix}20/3-\lambda&4\\4&20/3-\lambda\end{bmatrix}=(20/3-\lambda)^2-16=0\Rightarrow\lambda=20/3\pm4\): \[\lambda_1=\tfrac{32}3\approx10.667,\quad v_1=\tfrac1{\sqrt2}(1,1);\qquad \lambda_2=\tfrac83\approx2.667,\quad v_2=\tfrac1{\sqrt2}(1,-1).\] (Kiểm tra: \(\Sigma v_1=\frac1{\sqrt2}(20/3+4,\ 4+20/3)=\frac{32}3v_1\).)
+
+\textbf{Bước 4 --- tỉ lệ phương sai giải thích.} \(\dfrac{\lambda_1}{\lambda_1+\lambda_2}=\dfrac{32/3}{40/3}=0.8\), \(\dfrac{\lambda_2}{\lambda_1+\lambda_2}=0.2\).
+
+\textbf{Bước 5 --- sai số tái tạo khi giữ 1 thành phần.} Tọa độ trên \(v_2\): \(\frac{3-1}{\sqrt2}=\sqrt2\), \(\frac{1-3}{\sqrt2}=-\sqrt2\), \(\frac{-3+1}{\sqrt2}=-\sqrt2\), \(\frac{-1+3}{\sqrt2}=\sqrt2\). Phần bị bỏ của mỗi điểm có độ dài bình phương \(2\), nên \[\sum_i\|x_i-v_1v_1^\top x_i\|^2=4\times2=8 .\] Các điểm tái tạo: \((2,2),(2,2),(-2,-2),(-2,-2)\).
+
+\textbf{Bước 6 --- kiểm chứng với B.2.} Giá trị kỳ dị của \(X\): \(\sigma_i^2=(n-1)\lambda_i\), tức \(\sigma_1^2=32\), \(\sigma_2^2=8\) (\(\sigma_1=4\sqrt2\), \(\sigma_2=2\sqrt2\)). Eckart--Young: \(\min_{\operatorname{rank}B\le1}\|X-B\|_F^2=\sigma_2^2=8\) --- \textbf{khớp với bước 5}. Theo B.1: sai số tái tạo chia \(n-1\) là \(8/3=\lambda_2=\operatorname{tr}\Sigma-\lambda_1\).
